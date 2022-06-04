@@ -7,7 +7,6 @@ import data from './data'
 function App() {
   const [cartItems, setCartItems] = useState([])
   const { products } = data;
-  console.log(cartItems)
 
   const onAdd = (products) => {
     const exist = cartItems.find(item=> item.id === products.id);
