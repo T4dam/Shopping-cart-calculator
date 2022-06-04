@@ -5,8 +5,9 @@ import Main from "./components/main";
 import data from './data'
 
 function App() {
+  const [cartItems, setCartItems] = useState([])
   const { products } = data;
-  const {cartItems, setCartItems} = useState(['cat'])
+  console.log(cartItems)
 
   const onAdd = (products) => {
     const exist = cartItems.find(item=> item.id === products.id);
@@ -16,13 +17,25 @@ function App() {
       setCartItems([...cartItems, {...products, qty:1}])
     }
   }
+  const onRemove = (products) => {
+    const exist = cartItems.find(item=> item.id === products.id);
+    if (exist.qty === 1) {
+      setCartItems( cartItems.filter(item => item.id !== products.id))
+    
+  } else {
+    if (exist) {
+      setCartItems(cartItems.map(item=> item.id === products.id ? {...exist, qty: exist.qty - 1} : item))
+    }
+  }
+  }
+
   return (
     <div>
      <Header />
-     <div className="flex">
-       <Basket products={products} />
+     <div className="w-full flex justify-between">
+       <Main products={products} onAdd={onAdd} />
        
-       <Main cartItems={cartItems} onAdd={onAdd}/>
+       <Basket cartItems={cartItems} onRemove={onRemove} onAdd={onAdd}/>
      </div>
     </div>
   );
