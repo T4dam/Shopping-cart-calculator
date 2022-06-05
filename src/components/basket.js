@@ -39,12 +39,15 @@ const Basket = (props) => {
           <div className=''>${shippingPricess.toFixed(2)}</div>
         </div>
         <div className='flex justify-between'>
-          <div className=''>Total</div>
-          <div className=''>${totalPrices.toFixed(2)}</div>
+          <div className='font-bold'>Total</div>
+          <div className='font-bold'>${totalPrices.toFixed(2)}</div>
         </div>
-
+      <div className='flex justify-center mt-2'>
+        <button className='bg-yellow-400 rounded-lg px-3 p-1' onClick={()=> alert('Nukreipimas į mokėjimo puslapį')}>Continue to payment</button>
+      </div>
       </>
     ) }
+    
    </aside>
   )
 }

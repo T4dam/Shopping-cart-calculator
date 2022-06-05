@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div>
-     <Header />
+     <Header countCartItems={cartItems.length} />
      <div className="w-full flex justify-between">
        <Main products={products} onAdd={onAdd} />
        
